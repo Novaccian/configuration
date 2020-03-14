@@ -6,18 +6,23 @@
 (package-initialize)
 (require 'package)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/contrib"))
 (setq org-directory "C:/Users/flavi/Dropbox/Org")
+(require 'org-checklist)
 
-(setq my-org-default-todo-file (format "%s/actions.org" org-directory))
-(setq my-org-journal-file (format "%s/journal.org" org-directory))
-(setq my-org-goals-file (format "%s/goals.org" org-directory))
-(setq my-org-ref-file (format "%s/ref.org" org-directory)) ; should be machine-independent
+(defun org-my-toggle-agenda-file-set ()
+ (interactive)
+ (if (equal org-agenda-files "~/.agenda_files_work")
+     (setq org-agenda-files "~/.agenda_files_home")
+   (setq org-agenda-files "~/.agenda_files_work"))
+ (message "Using %s" org-agenda-files))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(fill-column 80)
  '(initial-buffer-choice org-directory)
  '(initial-frame-alist (quote ((height . 70) (width . 200) (top . 50) (left . 1))))
  '(org-agenda-custom-commands
@@ -41,101 +46,7 @@
       nil))))
  '(org-agenda-files "~/agenda_files")
  '(org-attach-store-link-p (quote attached))
- '(org-capture-templates
-   (quote
-    (("t" "todo" entry
-      (file+headline my-org-default-todo-file "Tmp")
-      "* TODO %? " :prepend t :empty-lines 1)
-     ("a" "Appointment" entry
-      (file+olp+datetree my-org-journal-file)
-      "* APP %?
-SCHEDULED: %T" :empty-lines 1)
-     ("j" "Journal" entry
-      (file+olp+datetree my-org-journal-file)
-      "* %<%R> %?" :empty-lines 1)
-     ("g" "Goals" entry
-      (file my-org-goals-file)
-      "* GOAL %?
-  - Started on %U
-  :SMART:
-  :Specific:   
-  :Measurable: 
-  :Actionable: 
-  :Timebound:  
-  :END:
-  :ACTIONS:
-
-  :END:
-" :empty-lines 1)
-     ("r" "Reference" entry
-      (file "~/org/notes.org")
-      "")
-     ("m" "Weekly Meal Plan" entry
-      (file+olp+datetree my-org-journal-file)
-      "* W%<%V> Meal Plan
-  |-----+-----------+-------+-------+--------|
-  | Day | Breakfast | Lunch | Snack | Dinner |
-  |-----+-----------+-------+-------+--------|
-  | Mon |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Tue |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Wed |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Thu |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Fri |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Sat |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-  | Sun |           |       |       |        |
-  |-----+-----------+-------+-------+--------|
-" :empty-lines 1)
-     ("c" "Checklists")
-     ("cf" "Financial Weekly Review" entry
-      (file+olp+datetree my-org-journal-file)
-      "* W%<%V> Financial Review
-  - [0/7] Reconcile my accounts
-    - [ ] Portofel
-    - [ ] Revolut
-    - [ ] Cont curent BRD
-    - [ ] Cont curent CEC
-    - [ ] Card Sodexo
-    - [ ] Card Unicredit Meniu
-    - [ ] Vitrina
-
-  - [0/4] Reconcile Adi's accounts
-    - [ ] Portofel Adi
-    - [ ] Card Sodexo Adi
-    - [ ] Cont curent Raiffeisen
-    - [ ] Revolut Adi
-
-  - [ ] Move coins to/from storage
-")
-     ("cF" "Financial Monthly Review" entry
-      (file+olp+datetree my-org-journal-file)
-      "* %<%B %Y> Financial Review
-  - Venituri
-
-  - Cheltuieli
-
-  - Profit/Pierdere
-" :empty-lines 1)
-     ("cg" "GTD Weekly Review" entry
-      (file+olp+datetree my-org-journal-file)
-      "* W%<%V> GTD Review
-  - [0/4] Get clear
-    - [ ] Collect loose papers and materials into in-tray
-    - [ ] Process in-tray, emails
-    - [ ] Browse through the journal notes for the past week
-    - [ ] Empty your head and capture ideas (5min)
-  - [0/3] Get current
-    - [ ] Review upcoming events and deadlines
-    - [ ] Review NEXT/HOLD/WAITING actions: set priorities,
-      schedule/cancel/hold
-    - [ ] Review projects and goals: evaluate progress and take
-      corrective actions" :empty-lines 1)
-     ("w" "Work"))))
+ '(org-capture-templates nil)
  '(org-clock-idle-time 60)
  '(org-clock-in-resume t)
  '(org-clock-out-remove-zero-time-clocks t)
