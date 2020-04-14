@@ -44,9 +44,13 @@
        (todo "HOLD|WAITING"
 	     ((org-agenda-overriding-header "Suspended"))))
       nil))))
- '(org-agenda-files "~/agenda_files")
  '(org-attach-store-link-p (quote attached))
- '(org-capture-templates nil)
+ '(org-capture-templates
+   (quote
+    (("j" "Journal" entry
+      (file+olp+datetree "journal.org")
+      "** %<%H:%M> %?\n")
+     )))
  '(org-clock-idle-time 60)
  '(org-clock-in-resume t)
  '(org-clock-out-remove-zero-time-clocks t)
