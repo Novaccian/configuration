@@ -1,4 +1,3 @@
-
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -7,15 +6,16 @@
 (require 'package)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/contrib"))
-(setq org-directory "C:/Users/flavi/Dropbox/Org")
 (require 'org-checklist)
 
-(defun org-my-toggle-agenda-file-set ()
- (interactive)
- (if (equal org-agenda-files "~/.agenda_files_work")
-     (setq org-agenda-files "~/.agenda_files_home")
-   (setq org-agenda-files "~/.agenda_files_work"))
- (message "Using %s" org-agenda-files))
+(setq org-directory
+      (cond ((string= (system-name) "PE426MF") "C:/Users/flavi/Dropbox/GTD")
+	    ; maybe Fresenius OneDrive is better?
+	    ((string= (system-name) "7BKQKQ2") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
+	    ((string= (system-name) "HP?????") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
+	    (t "C:/")))
+(setq org-agenda-files
+      (concat org-directory "/agenda-files"))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
