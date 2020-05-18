@@ -12,7 +12,7 @@
       (cond ((string= (system-name) "PE426MF") "C:/Users/flavi/Dropbox/GTD")
 	    ; maybe Fresenius OneDrive is better?
 	    ((string= (system-name) "7BKQKQ2") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
-	    ((string= (system-name) "HP?????") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
+	    ((string= (system-name) "HP861G2") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
 	    (t "C:/")))
 (setq org-agenda-files
       (concat org-directory "/agenda-files"))
