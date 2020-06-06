@@ -17,6 +17,9 @@
 (setq org-agenda-files
       (concat org-directory "/agenda-files"))
 
+(require 'dired-x)
+(setq-default dired-omit-files-p t) ; Buffer-local variable
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -59,6 +62,7 @@
  '(org-columns-default-format
    "%7TODO(State) %ITEM(Task) %2PRIORITY(P) %5Effort(Est.){:} %5CLOCKSUM(Time){:}")
  '(org-enforce-todo-dependencies t)
+ '(org-habit-graph-column 60)
  '(org-log-done (quote time))
  '(org-log-into-drawer t)
  '(org-modules
