@@ -11,8 +11,8 @@
 (setq org-directory
       (cond ((string= (system-name) "PE426MF") "C:/Users/flavi/Dropbox/GTD")
 	    ; maybe Fresenius OneDrive is better?
-	    ((string= (system-name) "7BKQKQ2") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
-	    ((string= (system-name) "HP861G2") "C:/Users/nicolae.novac/Dropbox/GTD/GTD Work")
+	    ((string= (system-name) "7BKQKQ2") "C:/Users/nicolae.novac/Dropbox/GTD Work")
+	    ((string= (system-name) "HP861G2") "C:/Users/nicolae.novac/Dropbox/GTD Work")
 	    (t "C:/")))
 (setq org-agenda-files
       (concat org-directory "/agenda-files"))
@@ -50,10 +50,18 @@
  '(org-attach-store-link-p (quote attached))
  '(org-capture-templates
    (quote
-    (("j" "Journal" entry
+    (("r" "Reference" entry
+      (file+headline "../org/ref.org" "Captured")
+      "* TODO REFILE: %?
+%T")
+     ("t" "Task" entry
+      (file+headline "gtd.org" "Captured")
+      "* TODO REFILE: %?
+%T" :empty-lines 1)
+     ("j" "Journal" entry
       (file+olp+datetree "journal.org")
-      "** %<%H:%M> %?\n")
-     )))
+      "** %<%H:%M> %?
+"))))
  '(org-clock-idle-time 60)
  '(org-clock-in-resume t)
  '(org-clock-out-remove-zero-time-clocks t)
