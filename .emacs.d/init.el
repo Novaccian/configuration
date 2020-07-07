@@ -53,11 +53,11 @@
     (("r" "Reference" entry
       (file+headline "../org/ref.org" "Captured")
       "* TODO REFILE: %?
-%T")
+%U")
      ("t" "Task" entry
       (file+headline "gtd.org" "Captured")
       "* TODO REFILE: %?
-%T" :empty-lines 1)
+%U" :empty-lines 1)
      ("j" "Journal" entry
       (file+olp+datetree "journal.org")
       "** %<%H:%M> %?
@@ -73,6 +73,7 @@
  '(org-habit-graph-column 60)
  '(org-log-done (quote time))
  '(org-log-into-drawer t)
+ '(org-log-reschedule (quote note))
  '(org-modules
    (quote
     (org-bbdb org-bibtex org-docview org-habit org-info org-irc org-mhe org-rmail org-w3m org-learn org-toc)))
