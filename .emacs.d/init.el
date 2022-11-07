@@ -77,7 +77,7 @@
  '(org-todo-keywords
    '((sequence "PROJ(p)" "TODO(t)" "NEXT(n)" "HOLD(h@/!)" "WAIT(w@/!)" "|" "DONE(d)" "CANCELLED(c@/!)")))
  '(org-todo-repeat-to-state "NEXT")
- '(package-selected-packages '(magit yasnippet org helm f emacsql-sqlite3)))
+ '(package-selected-packages '(magit yasnippet)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -89,9 +89,9 @@
 (global-set-key (kbd "<f12>") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 (global-set-key (kbd "C-<f9>") 'previous-buffer)
+(global-set-key (kbd "C-<f10>") 'next-buffer)
 (global-set-key (kbd "M-<f9>") 'org-toggle-inline-images)
 (global-set-key (kbd "C-x n r") 'narrow-to-region)
-(global-set-key (kbd "C-<f10>") 'next-buffer)
 (global-set-key (kbd "C-c L") 'org-store-link)
 (global-set-key (kbd "C-c C-x L") 'org-insert-link)
 
@@ -100,9 +100,6 @@
 
 (setq org-global-properties
       '(("Effort_ALL" . "0:15 0:30 0:45 1:00 2:00 3:00 4:00 5:00 6:00 0:00")))
-
-(setq org-todo-keywords
-      (quote ((sequence "PROJ(p)" "TODO(t)" "NEXT(n)" "HOLD(h@/!)" "WAIT(w@/!)" "|" "DONE(d/!)" "CANCELLED(c@/!)" "APP(a)"))))
 
 (setq org-todo-keyword-faces
       (quote (("TODO" :foreground "red" :weight bold)
